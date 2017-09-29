@@ -14,18 +14,30 @@ public final class NetworkDevice {
   private static final int DEFAULT_TIMEOUT = 1000;
   private static final int DEFAULT_PORT = 80;
 
-  // Constructor (default port, default timeout) 
+  /**
+   * Creates a NetworkDevice with specified host, default port (80), and default timeout (1000 ms) 
+   * @param host 	a host name or IP address, e.g. "192.168.10.10"
+   */
   public NetworkDevice(String host) 
   {
     this(host, NetworkDevice.DEFAULT_PORT, NetworkDevice.DEFAULT_TIMEOUT);
   }
-  // Constructor (default timeout) 
+  /**
+   * Creates a NetworkDevice with specified host and port, and default timeout (1000 ms)
+   * @param host 	a host name or IP address, e.g. "192.168.10.10"
+   * @param port 	a port, e.g., 80
+   */
   public NetworkDevice(String host, int port) 
   {
     this(host, port, NetworkDevice.DEFAULT_TIMEOUT);
   }
 
-  // Constructor
+  /**
+   * Creates a NetworkDevice with specified host, port, and timeout.
+   * @param host 	host name or IP address, e.g. "192.168.10.10"
+   * @param port 	port, e.g., 80
+   * @param timeout timeout in ms
+   */
   public NetworkDevice(String host, int port, int timeout) 
   {
     this.host = host;
@@ -33,6 +45,12 @@ public final class NetworkDevice {
     this.timeout = timeout;
   }
 
+  /**
+   * Returns a boolean if the device is reachable within the timeout.  Implementation
+   * creates a java.net.Socket and tries to connect it to a java.net.InetSocketAddress 
+   * @return Boolean
+   * @throws UnknownHostException
+   */
   public boolean isReachable() 
   throws UnknownHostException 
   {
@@ -62,14 +80,26 @@ public final class NetworkDevice {
   }
 
 
+  /**
+   * Returns the host of the NetworkDevice
+   * @return host
+   */
   public String getHost()
   {
     return this.host;
   }
+  /**
+   * Returns the port of the NetworkDevice
+   * @return port 
+   */
   public int getPort()
   {
     return this.port;
   }
+  /**
+   * Returns the timeout (ms) of the NetworkDevice
+   * @return timeout (ms)
+   */
   public int getTimeout()
   {
     return this.timeout;
